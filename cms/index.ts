@@ -14,7 +14,7 @@ const amplience = {
       .request(publicRuntimeConfig.amplience.requestParams)
     return response?.responses?.[0]?.content
   },
-  fetchProductDetails: async (productCode) => {
+  fetchProductDetails: async (productCode: string) => {
     const response = await client
       .filterByContentType(publicRuntimeConfig.amplience.productDetailsPageContentUrl)
       .filterBy('/productCode', productCode)

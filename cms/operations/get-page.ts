@@ -1,5 +1,5 @@
 import amplience from '@/cms'
-import { amplienceGetters } from '@/lib/getters'
+import { amplienceGetters } from '@/cms/getters'
 
 interface PageProps {
   entryUrl: string
