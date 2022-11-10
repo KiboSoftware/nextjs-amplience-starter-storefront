@@ -21,6 +21,7 @@ module.exports = {
       'cdn-sb.mozu.com',
       'encrypted-tbn0.gstatic.com',
       'images.ctfassets.net',
+      'cdn.media.amplience.net',
     ],
   },
   publicRuntimeConfig: {
@@ -80,6 +81,23 @@ module.exports = {
     defaultWishlistName: DEFAULT_WISHLIST_NAME,
     pciHost: process.env.KIBO_PCI_HOST,
     apiHost: process.env.KIBO_API_HOST,
+
+    amplience: {
+      hubName: 'kibo',
+      homePageContentUrl: 'https://kibo-example.com/kibo-home-page',
+      productDetailsPageContentUrl: 'https://kibo-examples.com/pdp-products',
+      requestParams: {
+        format: 'inlined',
+        depth: 'all',
+      },
+      homePageContentTypes: {
+        smallBanner: 'Kibo Simple Banner',
+        heroCarousel: 'Kibo Hero Carousel Demo',
+        homePageProducts: 'Home Page Products',
+        largePromoBlocks: 'Large promo blocks',
+        smallPromoBlocks: 'Small promo blocks',
+      },
+    },
   },
   serverRuntimeConfig: {
     revalidate: process.env.GLOBAL_PAGE_REVALIDATE || 30,
