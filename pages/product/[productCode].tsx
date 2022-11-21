@@ -58,11 +58,7 @@ const ProductDetailPage: NextPage = (props: any) => {
   const breadcrumbs = product ? productGetters.getBreadcrumbs(product) : []
   return (
     <>
-      <ProductDetailTemplate
-        product={product}
-        breadcrumbs={breadcrumbs}
-        cmsProducts={cmsProductDetail}
-      />
+      <ProductDetailTemplate product={product} breadcrumbs={breadcrumbs} />
     </>
   )
 }
