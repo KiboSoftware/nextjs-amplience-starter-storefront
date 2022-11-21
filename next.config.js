@@ -22,6 +22,7 @@ module.exports = {
       'encrypted-tbn0.gstatic.com',
       'images.ctfassets.net',
       'cdn.media.amplience.net',
+      '12g4xgrum8sm1k2fu1fbys4a8.staging.bigcontent.io',
     ],
   },
   publicRuntimeConfig: {
@@ -96,6 +97,10 @@ module.exports = {
         homePageProducts: 'Home Page Products',
         largePromoBlocks: 'Large promo blocks',
         smallPromoBlocks: 'Small promo blocks',
+        heroCarouselItem: 'Kibo Hero Carousel Item',
+      },
+      productDetailPageContentTypes: {
+        pdpProducts: 'PDP Products',
       },
     },
   },

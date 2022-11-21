@@ -1,8 +1,8 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import nextI18NextConfig from '../next-i18next.config'
+import { CmsComponent } from '@/cms/components'
 import { getPage } from '@/cms/operations/get-page'
-import CmsComponent from '@/components/home/CmsComponent/CmsComponent'
 import { FullWidthLayout } from '@/components/layout'
 import getCategoryTree from '@/lib/api/operations/get-category-tree'
 import type { CategoryTreeResponse, NextPageWithLayout } from '@/lib/types'

@@ -1,10 +1,8 @@
 import React from 'react'
 
-import KiboHeroCarousel from '../Carousel/KiboHeroCarousel'
-import CmsHomePageProducts from '../CmsHomePageProducts/CmsHomePageProducts'
-import ContentTile from '../ContentTile/ContentTile'
-import SmallBanner from '../SmallBanner/SmallBanner'
+import { SmallBanner, KiboHeroCarousel, ContentTile } from '@/components/home'
 import { ProductRecommendations } from '@/components/product'
+import CmsHomePageProducts from '../CmsHomePageProducts/CmsHomePageProducts'
 
 interface CmsComponentProps {
   content: any
@@ -15,6 +13,7 @@ interface SmallBannerProps {
   title: string
   subtitle: string
   call_to_action_link: { title: string; href: string }
+  background_color: string
 }
 
 interface KiboHeroCarouselProps {
@@ -49,14 +48,14 @@ const DefaultComponentMap = {
     component: SmallBanner,
     mapDataToProps: (data: SmallBannerProps) => {
       return {
-        bannerProps: {
+        bannerProps: data && {
           title: data?.title,
           subtitle: data?.subtitle,
           callToAction: {
             title: data?.call_to_action_link?.title,
             url: data?.call_to_action_link?.href,
           },
-          backgroundColor: '#A12E87',
+          backgroundColor: data?.background_color,
         },
       }
     },
@@ -66,12 +65,12 @@ const DefaultComponentMap = {
     mapDataToProps: (data: any) => {
       return {
         recentlyViewed: {
-          title: data?.reference[0].title,
-          productCodes: data?.reference[0]?.home_page_products,
+          title: data?.reference?.[0]?.title,
+          productCodes: data?.reference?.[0]?.home_page_products,
         },
         topSellings: {
-          title: data?.reference[1].title,
-          productCodes: data?.reference[1]?.home_page_products,
+          title: data?.reference?.[1]?.title,
+          productCodes: data?.reference?.[1]?.home_page_products,
         },
       }
     },
@@ -82,14 +81,14 @@ const DefaultComponentMap = {
       return {
         carouselItem: data?.hero_carousel_items?.map((item) => {
           return {
-            imageUrl: item.desktop_image.url,
-            mobileImageUrl: item.mobile_image.url,
-            imageAlt: item.image_alt_text,
-            title: item.title,
-            subtitle: item.subtitle,
-            description: item.description,
-            buttonText: item.button_link.title,
-            buttonLink: item.button_link.href,
+            imageUrl: item?.desktop_image.url,
+            mobileImageUrl: item?.mobile_image.url,
+            imageAlt: item?.image_alt_text,
+            title: item?.title,
+            subtitle: item?.subtitle,
+            description: item?.description,
+            buttonText: item?.button_link.title,
+            buttonLink: item?.button_link.href,
           }
         }),
       }
