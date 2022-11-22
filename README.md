@@ -56,6 +56,16 @@ KIBO_CLIENT_ID=KIBO_APP.1.0.0.Release
 KIBO_SHARED_SECRET=12345_Secret
 ```
 
+next.config.js example
+
+- `hubName` : The hub name used in the APIs is available from the "properties" item from the "settings" menu.
+- `contentTypeUrl`: A content type consists of the content type schema URL, together with a label and optionally an icon, card and one or more visualizations. Content types are what business users will use to create content in the Dynamic Content app.
+- `format`: The format parameter allows you to specify whether content is retrieved in bandwidth optimised linked data format or inlined as a content tree.
+- `depth` : The depth parameter allows you to control whether to return items linked to the specified content item.
+- `{{vse.domain}}` : The staging environment for fetching staged content.
+- `{delivery.key}` : Used to fetch a Content Item by Delivery Key (For Preview).
+- `{{content.sys.id}}` : Used to fetch a Content Item by ID (For Visualization).
+
 The following data is required to configure the storefront to communicate with your Kibo API Client.
 
 - `apiHost` - Your Kibo Commerce API Host.
