@@ -65,24 +65,35 @@ The following data is required to configure the storefront to communicate with y
 
 Visit [Kibo documentation](https://apidocs.kibong-perf.com/?spec=graphql#auth) for more details on API authentication
 
-next.config.js example
-
-```bash
-hubName= hub_name
-contentTypeUrl= 'https://example.com/home-page' and 'https://example.com/pdp-products'
-format= inlined
-depth=  all
-VSE Domain= vse_domain_url
-Delivery Key= delivery_key
-Content Sys Id= content_sys_id
-Image Domain= 'cdn.media.amplience.net' and 'vse_domain.staging.bigcontent.io'
+```javascript
+// next.config.js
+{   //...other config
+    images: {
+    domains: [
+      'cdn.media.amplience.net',
+      '{{vse.domain}}.staging.bigcontent.io',
+    ],
+  },
+}
+{
+    //...other config
+    amplience: {
+      hubName: {hubName},
+      homePageContentUrl: {contentTypeUrl},
+      productDetailsPageContentUrl: {contentTypeUrl},
+      requestParams: {
+        format: {format},
+        depth: {depth},
+      }
+    },
+}
 ```
 
 The following data is required to configure the storefront to communicate with your Amplience cms.
 
 - `hubName` : The hub name used in the APIs is available from the "properties" item from the "settings" menu.
 - `contentTypeUrl`: A content type consists of the content type schema URL, together with a label and optionally an icon, card and one or more visualizations. Content types are what business users will use to create content in the Dynamic Content app.
-- `format`: The format parameter allows you to specify whether content is retrieved in bandwidth optimised linked data format or inlined as a content tree.
+- `format`: The format parameter allows you to specify whether content is retrieved in bandwidth optimized linked data format or inlined as a content tree.
 - `depth` : The depth parameter allows you to control whether to return items linked to the specified content item.
 - `{{vse.domain}}` : The staging environment for fetching staged content.
 - `{delivery.key}` : Used to fetch a Content Item by Delivery Key (For Preview).
