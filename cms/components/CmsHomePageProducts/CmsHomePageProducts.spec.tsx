@@ -9,7 +9,7 @@ import { productSearchResultMock } from '@/__mocks__/stories/productSearchResult
 const { Common } = composeStories(stories)
 
 const ProductCardMock = () => <div data-testid="product-card-mock" />
-jest.mock('@/components/product/ProductCard/ProductCard', () => ProductCardMock)
+jest.mock('@/components/product/ProductCard/ProductCard', () => () => ProductCardMock())
 
 describe('[component] CmsHomePageProducts', () => {
   it('should render component', async () => {

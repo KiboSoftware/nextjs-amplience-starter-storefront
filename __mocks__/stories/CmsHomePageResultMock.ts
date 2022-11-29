@@ -7,6 +7,7 @@ export const cmsHomePageResultMock = [
         title: 'Shop Now',
         href: '/category/deals',
       },
+      background_color: '#A12E87',
     },
   },
   {

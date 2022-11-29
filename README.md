@@ -1,4 +1,4 @@
-<h2 align="center">KiboCommerce & Next.JS</h2>
+<h2 align="center">KiboCommerce & Next.JS & Amplience</h2>
 
 <p align="center">
 This is a headless ecommerce starter kit for KiboCommerce platform using Next.JS <br>
@@ -17,13 +17,14 @@ Demo: <a href="https://nextjs-storefront-kibo-commerce.vercel.app">https://nextj
 - KiboCommerce data hooks
 - PWA Ready
 - Omni Channel Capability (Ship to home and Pickup in Store support)
+- Amplience integration
 
 ## Getting Started
 
 1. Clone this repo
 
 ```bash
-git clone https://github.com/KiboSoftware/nextjs-storefront.git
+git clone https://github.com/KiboSoftware/nextjs-amplience-starter-storefront.git
 ```
 
 2. Change into directory and install dependencies
@@ -65,6 +66,40 @@ The following data is required to configure the storefront to communicate with y
 
 Visit [Kibo documentation](https://docs.kibocommerce.com/help) for more details on API authentication
 
+```javascript
+// next.config.js
+{   //...other config
+    images: {
+    domains: [
+      'cdn.media.amplience.net',
+      '{{vse.domain}}.staging.bigcontent.io',
+    ],
+  },
+}
+{
+    //...other config
+    amplience: {
+      hubName: {hubName},
+      homePageContentUrl: {contentTypeUrl},
+      productDetailsPageContentUrl: {contentTypeUrl},
+      requestParams: {
+        format: {format},
+        depth: {depth},
+      }
+    },
+}
+```
+
+The following data is required to configure the storefront to communicate with your Amplience cms.
+
+- `hubName` : The hub name used in the APIs is available from the "properties" item from the "settings" menu.
+- `contentTypeUrl`: A content type consists of the content type schema URL, together with a label and optionally an icon, card and one or more visualizations. Content types are what business users will use to create content in the Dynamic Content app.
+- `format`: The format parameter allows you to specify whether content is retrieved in bandwidth optimized linked data format or inlined as a content tree.
+- `depth` : The depth parameter allows you to control whether to return items linked to the specified content item.
+- `{{vse.domain}}` : The staging environment for fetching staged content.
+- `{delivery.key}` : Used to fetch a Content Item by Delivery Key (For Preview).
+- `{{content.sys.id}}` : Used to fetch a Content Item by ID (For Visualization).
+
 ## Useful Commands
 
 ```bash
@@ -84,6 +119,26 @@ npm run test # run unit / integration tests
 - Data Fetching / State Management - [React Query](https://react-query-v3.tanstack.com/overview)
 - Localization - [Next i18Next](https://github.com/i18next/next-i18next)
 
+## Pre-requisite
+
+- You must have a virtual staging environment specified in your settings in order to show visualizations for any content.
+- The current user's IP address must be in the whitelist of approved IP addresses in order for the visualization to be displayed.
+- Follow Steps mentioned in link for configuring amplience cms (https://github.com/KiboSoftware/amplience-demo-data).
+- Next, after above steps data can be created on amplience website (Need an account prior on amplience cms).
+
+## Visualization mode in Amplience
+
+- A visualization lets your users preview an individual piece of content by embedding your app in the content editing interface.
+- Dynamic Content tells your app which content item the user wants to view and your app fetches that content and renders it.
+- The visualization is displayed in an iFrame side by side with the content form and can also be shown as a pop out visualization in its own window.
+- Visualizations make use of a virtual staging environment (VSE) to allow you to preview content before it's published.
+- The visualization environment will usually be configured for you at the beginning of your project and can be configured from the "Visualization settings" menu in the Dynamic Content app.
+
+## Preview mode in Amplience
+
+- A content preview app provides a way for you to preview content in your website, app or other channel and allows you to see how it will look before it goes live.
+- Developing a preview app is to configure an online resource that will be used to preview your content. This resource can be as simple or complex as you like, from a single page to an entire website or a mobile app running on an online simulator.
+
 ## Contributions
 
-All contributions welcome!
+- All contributions welcome!

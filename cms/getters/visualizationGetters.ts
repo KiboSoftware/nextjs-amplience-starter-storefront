@@ -7,39 +7,45 @@ const formatLinkData = (links: any) => {
   return { title, href }
 }
 
-const formatSmallBannerData = (smallBannerData: any) => ({
-  small_banner: {
-    title: smallBannerData?.title,
-    subtitle: smallBannerData?.subtitle,
-    call_to_action_link: {
-      title: smallBannerData?.callToActionText,
-      href: smallBannerData?.callToActionUrl,
-    },
-    background_color: smallBannerData?.backgroundColor,
-  },
-})
+const formatSmallBannerData = (smallBannerData: any) => {
+  return {
+    small_banner: smallBannerData
+      ? {
+          title: smallBannerData?.title,
+          subtitle: smallBannerData?.subtitle,
+          call_to_action_link:
+            {
+              title: smallBannerData?.callToActionText,
+              href: smallBannerData?.callToActionUrl,
+            } || null,
+          background_color: smallBannerData?.backgroundColor,
+        }
+      : null,
+  }
+}
 
 const formatHeroCarouselData = (heroCarouselData: any) => {
-  const heroCarouselItems =
-    heroCarouselData?.slides?.map((item: any) => ({
-      desktop_image: {
-        url: `https://${item?.desktopImage?.defaultHost}/i/${item?.desktopImage?.endpoint}/${item?.desktopImage?.name}`,
-      },
-      mobile_image: {
-        url: `https://${item?.mobileImage?.defaultHost}/i/${item?.mobileImage?.endpoint}/${item?.mobileImage?.name}`,
-      },
-      title: item?.title,
-      subtitle: item?.subtitle,
-      description: item?.description,
-      button_link: {
-        title: item?.callToAction?.text,
-        href: item?.callToAction?.href,
-      },
-    })) || null
+  const heroCarouselItems = heroCarouselData
+    ? {
+        desktop_image: {
+          url: `https://${heroCarouselData?.desktopImage?.defaultHost}/i/${heroCarouselData?.desktopImage?.endpoint}/${heroCarouselData?.desktopImage?.name}`,
+        },
+        mobile_image: {
+          url: `https://${heroCarouselData?.mobileImage?.defaultHost}/i/${heroCarouselData?.mobileImage?.endpoint}/${heroCarouselData?.mobileImage?.name}`,
+        },
+        title: heroCarouselData?.title,
+        subtitle: heroCarouselData?.subtitle,
+        description: heroCarouselData?.description,
+        button_link: {
+          title: heroCarouselData?.callToAction?.text,
+          href: heroCarouselData?.callToAction?.href,
+        },
+      }
+    : null
 
   return {
     hero_carousel: {
-      hero_carousel_items: heroCarouselItems,
+      hero_carousel_items: heroCarouselItems ? [heroCarouselItems] : [],
     },
   }
 }
@@ -98,7 +104,8 @@ const getAmplienceHomePageData = (ampliencePageData: any) => {
     formatHeroCarouselData(
       ampliencePageData?.find(
         (data: any) =>
-          data?._meta?.name === publicRuntimeConfig.amplience?.homePageContentTypes?.heroCarousel
+          data?._meta?.name ===
+          publicRuntimeConfig.amplience?.homePageContentTypes?.heroCarouselItem
       )
     ) || null
 
@@ -131,30 +138,6 @@ const getAmplienceHomePageData = (ampliencePageData: any) => {
   return [smallBanner, heroCarousel, homePageProducts, largePromoBlocks, smallPromoBlocks]
 }
 
-const formatAmplienceProductDetailsData = (cmsProducts: any) => {
-  const recommendations = {
-    recommendations: {
-      title: cmsProducts?.recommendations?.title,
-      product_recommendations: cmsProducts?.recommendations?.productSelector?.map(
-        (productCode: string) => productCode
-      ),
-    },
-  }
-  const customersAlsoBought = {
-    customers_also_bought: {
-      title: cmsProducts?.customersAlsoBought?.title,
-      customers_also_bought: cmsProducts?.customersAlsoBought?.productSelector.map(
-        (productCode: string) => productCode
-      ),
-    },
-  }
-  return [recommendations, customersAlsoBought]
-}
-
-const getAmplienceProductDetailsPageData = (amplienceProductData: any) =>
-  formatAmplienceProductDetailsData(amplienceProductData)
-
-export const amplienceGetters = {
+export const visualizationGetters = {
   getAmplienceHomePageData,
-  getAmplienceProductDetailsPageData,
 }

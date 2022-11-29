@@ -6,7 +6,7 @@ import CmsHomePageProducts from './CmsHomePageProducts'
 
 // Home
 export default {
-  title: 'Home/CmsHomePageProducts',
+  title: 'Cms/CmsHomePageProducts',
   component: CmsHomePageProducts,
 } as ComponentMeta<typeof CmsHomePageProducts>
 
