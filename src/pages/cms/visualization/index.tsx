@@ -1,5 +1,5 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import getConfig from 'next/config'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { CmsComponent } from '@/cms/components'
 import { amplienceGetters, visualizationGetters } from '@/cms/getters'
@@ -7,7 +7,6 @@ import { fetchContentById } from '@/cms/utils/fetchContent'
 import { FullWidthLayout } from '@/components/layout'
 import getCategoryTree from '@/lib/api/operations/get-category-tree'
 import type { CategoryTreeResponse, NextPageWithLayout } from '@/lib/types'
-import nextI18NextConfig from 'next-i18next.config'
 
 import type { GetServerSidePropsContext } from 'next'
 
@@ -39,7 +38,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     props: {
       categoriesTree,
       cmsPage,
-      ...(await serverSideTranslations(locale as string, ['common'], nextI18NextConfig)),
+      ...(await serverSideTranslations(locale as string, ['common'])),
     },
   }
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import CmsComponent from './CmsComponent'
-import { cmsHomePageResultMock } from '@/__mocks__/stories/cmsHomePageResultMock'
+import { cmsHomePageResultMock } from '@/__mocks__/stories/CmsHomePageResultMock'
 
 // Home
 export default {

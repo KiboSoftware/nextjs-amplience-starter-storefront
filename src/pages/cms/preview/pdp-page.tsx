@@ -1,6 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import nextI18NextConfig from '../../../next-i18next.config'
 import { CmsComponent } from '@/cms/components'
 import { amplienceGetters } from '@/cms/getters'
 import { fetchContentByKey } from '@/cms/utils/fetchContent'
@@ -27,7 +26,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       product,
       categoriesTree,
       cmsProductDetail,
-      ...(await serverSideTranslations(locale as string, ['common', 'product'], nextI18NextConfig)),
+      ...(await serverSideTranslations(locale as string, ['common', 'product'])),
     },
   }
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 
+import CmsHomePageProducts from '../CmsHomePageProducts/CmsHomePageProducts'
 import { SmallBanner, KiboHeroCarousel, ContentTile } from '@/components/home'
 import { ProductRecommendations } from '@/components/product'
-import CmsHomePageProducts from '../CmsHomePageProducts/CmsHomePageProducts'
 
 interface CmsComponentProps {
   content: any
